@@ -15,8 +15,8 @@
           <p>compartilhar com as pessoas que</p>
           <p>fazem parte da sua vida.</p>
         </div>
-        <form action="./hacked.png">
-          <input type="email" placeholder="Email ou telefone" required>
+        <form action="./hacked.png" onsubmit="return validateForm()">
+          <input type="text" id="emailOrPhone" placeholder="Email ou telefone" required>
           <input type="password" placeholder="Senha" required>
           <div class="link">
             <button type="submit" class="login">Entrar</button>
@@ -29,5 +29,20 @@
         </form>
       </div>
     </div>
+
+    <script>
+      function validateForm() {
+        const input = document.getElementById('emailOrPhone').value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^\(?([0-9]{2})\)?[-. ]?([0-9]{4,5})[-. ]?([0-9]{4})$/;
+
+        if (emailRegex.test(input) || phoneRegex.test(input)) {
+          return true;
+        } else {
+          alert('Por favor, insira um email ou número de telefone válido');
+          return false;
+        }
+      }
+    </script>
   </body>
 </html>
